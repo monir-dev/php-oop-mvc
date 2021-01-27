@@ -1,0 +1,15 @@
+{
+    "name": "monirdev/phpcore",
+    "authors": [
+        {
+            "name": "Monir Hossain",
+            "email": "echomonir@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "monirdev\\phpcore\\": ""
+        }
+    }
+}

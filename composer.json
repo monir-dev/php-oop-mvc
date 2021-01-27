@@ -1,0 +1,18 @@
+{
+    "name": "monirdev/phpcore",
+    "authors": [
+        {
+            "name": "Monir Hossain",
+            "email": "echomonir@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "."
+        },
+        "files": ["helpers/helpers.php"]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.0"
+    }
+}
