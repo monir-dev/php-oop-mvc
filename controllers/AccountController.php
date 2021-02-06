@@ -32,9 +32,9 @@ class AccountController extends Controller
     public function login(Request $request)
     {
         $loginForm = new LoginForm();
-        $user = User::get();
+//        $user = User::get();
 //        $user = User::findOne(['email' => 'admin@gmail.com']);
-        dd($user);
+//        dd($user);
 
         if ($request->getMethod() === 'post') {
             $loginForm->loadData($request->getBody());

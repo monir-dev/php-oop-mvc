@@ -12,7 +12,7 @@ namespace app\monirdev\phpcore;
  * Class Request
  *
  * @author  Monir Hossain <echomonir@gmail.com>
- * @package thecodeholic\mvc
+ * @package mvc
  */
 class Request
 {

@@ -13,7 +13,7 @@ use app\monirdev\phpcore\exception\NotFoundException;
  * Class Router
  *
  * @author  Monir Hossain <echomonir@gmail.com>
- * @package thecodeholic\mvc
+ * @package mvc
  */
 class Router
 {
@@ -39,12 +39,17 @@ class Router
 
     public function resolve()
     {
+
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
         $callback = $this->routeMap[$method][$url] ?? false;
+
+        dd($method, $url, $callback);
+
         if (!$callback) {
             throw new NotFoundException();
         }
+
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
@@ -61,6 +66,9 @@ class Router
             }
             $callback[0] = $controller;
         }
+
+
+
         return call_user_func($callback, $this->request, $this->response);
     }
 

@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 
+use app\models\Post;
 use app\monirdev\phpcore\Application;
 use app\monirdev\phpcore\Controller;
 use app\monirdev\phpcore\middlewares\AuthMiddleware;
@@ -35,9 +36,10 @@ class SiteController extends Controller
         $this->header = "OOP PHP MVC blog";
         $this->subheader = "A Blog Theme by Start Bootstrap";
 
+        $posts = Post::get();
+
         return $this->render('home', [
-            'pageHeader' => "Monir's OOP PHP MVC blog",
-            'pageSubHeader' => "A Blog Theme by Start Bootstrap"
+            'posts' => $posts
         ]);
     }
 

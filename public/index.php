@@ -8,6 +8,7 @@
 use app\controllers\AboutController;
 use app\controllers\SiteController;
 use app\controllers\AccountController;
+use app\controllers\PostController;
 use app\monirdev\phpcore\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -35,6 +36,11 @@ $app->router->get('/login', [AccountController::class, 'login']);
 $app->router->post('/login', [AccountController::class, 'login']);
 $app->router->get('/logout', [AccountController::class, 'logout']);
 $app->router->get('/profile', [AccountController::class, 'profile']);
+
+$app->router->get('/post/create', [PostController::class, 'create']);
+$app->router->post('/post/create', [PostController::class, 'create']);
+$app->router->get('/post/{id}', [PostController::class, 'view']);
+
 
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/contact', [SiteController::class, 'contact']);

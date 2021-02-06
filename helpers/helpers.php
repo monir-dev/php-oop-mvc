@@ -28,3 +28,18 @@ if( ! function_exists('dump') ) {
         }
     }
 }
+
+
+if( ! function_exists('assets') ) {
+    function assets($path) {
+       echo url() . '/' . $path;
+//       echo dirname(__DIR__).'/public/'.$path;
+    }
+}
+
+if( ! function_exists('url') ) {
+    function url() : string {
+        return 'http://' . $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+    }
+}
+
