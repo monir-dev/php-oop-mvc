@@ -7,6 +7,7 @@
 
 use app\controllers\AboutController;
 use app\controllers\SiteController;
+use app\controllers\AccountController;
 use app\monirdev\phpcore\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -27,14 +28,17 @@ $app->on(Application::EVENT_BEFORE_REQUEST, function(){
 });
 
 
+
+$app->router->get('/register', [AccountController::class, 'register']);
+$app->router->post('/register', [AccountController::class, 'register']);
+$app->router->get('/login', [AccountController::class, 'login']);
+$app->router->post('/login', [AccountController::class, 'login']);
+$app->router->get('/logout', [AccountController::class, 'logout']);
+$app->router->get('/profile', [AccountController::class, 'profile']);
+
 $app->router->get('/', [SiteController::class, 'home']);
-$app->router->get('/register', [SiteController::class, 'register']);
-$app->router->post('/register', [SiteController::class, 'register']);
-$app->router->get('/login', [SiteController::class, 'login']);
-$app->router->post('/login', [SiteController::class, 'login']);
-$app->router->get('/logout', [SiteController::class, 'logout']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->get('/about', [AboutController::class, 'index']);
-$app->router->get('/profile', [SiteController::class, 'profile']);
+
 
 $app->run();

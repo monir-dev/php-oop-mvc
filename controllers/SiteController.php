@@ -31,49 +31,14 @@ class SiteController extends Controller
 
     public function home()
     {
+        $this->title = "Simple Blog";
+        $this->header = "OOP PHP MVC blog";
+        $this->subheader = "A Blog Theme by Start Bootstrap";
+
         return $this->render('home', [
-            'name' => 'TheCodeholic'
+            'pageHeader' => "Monir's OOP PHP MVC blog",
+            'pageSubHeader' => "A Blog Theme by Start Bootstrap"
         ]);
-    }
-
-    public function login(Request $request)
-    {
-        $loginForm = new LoginForm();
-        if ($request->getMethod() === 'post') {
-            $loginForm->loadData($request->getBody());
-            if ($loginForm->validate() && $loginForm->login()) {
-                Application::$app->response->redirect('/');
-                return;
-            }
-        }
-        $this->setLayout('auth');
-        return $this->render('login', [
-            'model' => $loginForm
-        ]);
-    }
-
-    public function register(Request $request)
-    {
-        $registerModel = new User();
-        if ($request->getMethod() === 'post') {
-            $registerModel->loadData($request->getBody());
-            if ($registerModel->validate() && $registerModel->save()) {
-                Application::$app->session->setFlash('success', 'Thanks for registering');
-                Application::$app->response->redirect('/');
-                return 'Show success page';
-            }
-
-        }
-        $this->setLayout('auth');
-        return $this->render('register', [
-            'model' => $registerModel
-        ]);
-    }
-
-    public function logout(Request $request, Response $response)
-    {
-        Application::$app->logout();
-        $response->redirect('/');
     }
 
     public function contact()
@@ -81,8 +46,5 @@ class SiteController extends Controller
         return $this->render('contact');
     }
 
-    public function profile()
-    {
-        return $this->render('profile');
-    }
+
 }

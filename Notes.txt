@@ -1,3 +1,13 @@
 blog source code link (Free)
 ----------------------------
 https://startbootstrap.com/theme/clean-blog-jekyll
+
+
+PhpStorm shortcuts:
+-------------------
+Code | Reformat Code or press Ctrl+Alt+L
+
+
+Reinitialize git
+git update-ref -d refs/heads/master
+git commit -m "New initial commit"

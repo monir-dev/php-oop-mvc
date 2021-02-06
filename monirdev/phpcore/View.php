@@ -17,12 +17,19 @@ namespace app\monirdev\phpcore;
 class View
 {
     public string $title = '';
+    public string $header = '';
+    public string $subheader = '';
 
     public function renderView($view, array $params)
     {
         $layoutName = Application::$app->layout;
         if (Application::$app->controller) {
             $layoutName = Application::$app->controller->layout;
+
+            // set page properties
+            $this->title = Application::$app->controller->title;
+            $this->header = Application::$app->controller->header;
+            $this->subheader = Application::$app->controller->subheader;
         }
         $viewContent = $this->renderViewOnly($view, $params);
         ob_start();

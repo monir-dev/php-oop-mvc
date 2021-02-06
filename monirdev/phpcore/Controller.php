@@ -16,6 +16,11 @@ use app\monirdev\phpcore\middlewares\BaseMiddleware;
  */
 class Controller
 {
+    // Page Properties
+    public string $title = "";
+    public string $header = "";
+    public string $subheader = "";
+
     public string $layout = 'main';
     public string $action = '';
 

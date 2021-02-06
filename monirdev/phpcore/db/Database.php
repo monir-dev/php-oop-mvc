@@ -26,8 +26,14 @@ class Database
         $username = $dbConfig['user'] ?? '';
         $password = $dbConfig['password'] ?? '';
 
-        $this->pdo = new \PDO($dbDsn, $username, $password);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $driver_options = array(
+            \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
+        );
+        $this->pdo = new \PDO($dbDsn, $username, $password, $driver_options);
+        //$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+//        $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
     }
 
     public function applyMigrations()
