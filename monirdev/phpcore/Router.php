@@ -13,7 +13,7 @@ use app\monirdev\phpcore\exception\NotFoundException;
  * Class Router
  *
  * @author  Monir Hossain <echomonir@gmail.com>
- * @package mvc
+ * @package monirdev/phpcore
  */
 class Router
 {
@@ -42,11 +42,19 @@ class Router
 
         $method = $this->request->getMethod();
         $url = $this->request->getUrl();
-        $callback = $this->routeMap[$method][$url] ?? false;
+        $regReplacedUrl = $url;
 
-        dd($method, $url, $callback);
+        $pattern = '(/\d+)';
+        preg_match($pattern, $url, $matches, PREG_OFFSET_CAPTURE);
+        if(count($matches) > 0) {
+            $replacement = '/{id}';
+            $regReplacedUrl = preg_replace($pattern, $replacement, $url);
+        }
+
+        $callback = $this->routeMap[$method][$regReplacedUrl] ?? false;
 
         if (!$callback) {
+            /** @var NotFoundException */
             throw new NotFoundException();
         }
 
@@ -55,7 +63,7 @@ class Router
         }
         if (is_array($callback)) {
             /**
-             * @var $controller \app\monirdev\phpcore\Controller
+             * @var $controller Controller
              */
             $controller = new $callback[0];
             $controller->action = $callback[1];
@@ -67,8 +75,10 @@ class Router
             $callback[0] = $controller;
         }
 
-
-
+        if (count($matches) > 0) {
+            $id = explode('/', $matches[0][0])[1];
+            return call_user_func($callback, $id, $this->request, $this->response);
+        }
         return call_user_func($callback, $this->request, $this->response);
     }
 
