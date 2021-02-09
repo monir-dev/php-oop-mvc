@@ -19,6 +19,7 @@ class View
     public string $title = '';
     public string $header = '';
     public string $subheader = '';
+    public string $headerImage = '';
 
     public function renderView($view, array $params)
     {
@@ -30,6 +31,7 @@ class View
             $this->title = Application::$app->controller->title;
             $this->header = Application::$app->controller->header;
             $this->subheader = Application::$app->controller->subheader;
+            $this->headerImage = Application::$app->controller->headerImage;
         }
         $viewContent = $this->renderViewOnly($view, $params);
         ob_start();

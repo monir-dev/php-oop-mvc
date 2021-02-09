@@ -75,10 +75,12 @@ class Router
             $callback[0] = $controller;
         }
 
+
         if (count($matches) > 0) {
             $id = explode('/', $matches[0][0])[1];
             return call_user_func($callback, $id, $this->request, $this->response);
         }
+
         return call_user_func($callback, $this->request, $this->response);
     }
 

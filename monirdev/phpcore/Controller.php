@@ -20,6 +20,7 @@ class Controller
     public string $title = "";
     public string $header = "";
     public string $subheader = "";
+    public string $headerImage = "";
 
     public string $layout = 'main';
     public string $action = '';

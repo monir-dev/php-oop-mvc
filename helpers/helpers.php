@@ -32,7 +32,7 @@ if( ! function_exists('dump') ) {
 
 if( ! function_exists('assets') ) {
     function assets($path) {
-       echo url() . '/' . $path;
+       return url() . '/' . $path;
 //       echo dirname(__DIR__).'/public/'.$path;
     }
 }

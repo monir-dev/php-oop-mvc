@@ -18,7 +18,7 @@ use app\monirdev\phpcore\form\Form;
 $form = new Form();
 ?>
 
-<?php $form = Form::begin('', 'post') ?>
+<?php $form = Form::begin('', 'post', ['enctype' => 'multipart/form-data']) ?>
 <?php echo $form->field($model, 'title') ?>
     <div class="form-group">
         <label>Image</label>

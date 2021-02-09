@@ -40,6 +40,7 @@ $app->router->get('/profile', [AccountController::class, 'profile']);
 $app->router->get('/post/create', [PostController::class, 'create']);
 $app->router->post('/post/create', [PostController::class, 'create']);
 $app->router->get('/post/{id}', [PostController::class, 'view']);
+$app->router->get('/post/search', [PostController::class, 'search']);
 
 
 $app->router->get('/', [SiteController::class, 'home']);
